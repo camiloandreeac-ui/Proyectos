@@ -1,0 +1,277 @@
+/* =============================
+   📘 Variables de diseño
+   ============================= */
+:root {
+  --neutral-900: hsl(227, 75%, 14%);
+  --neutral-800: hsl(226, 25%, 17%);
+  --neutral-700: hsl(225, 23%, 24%);
+  --neutral-600: hsl(226, 11%, 37%);
+  --neutral-300: hsl(0, 0%, 78%);
+  --neutral-200: hsl(217, 61%, 90%);
+  --neutral-100: hsl(0, 0%, 93%);
+  --neutral-0: hsl(200, 60%, 99%);
+
+  --red-400: hsl(3, 86%, 64%);
+  --red-500: hsl(3, 71%, 56%);
+  --red-700: hsl(3, 77%, 44%);
+
+  --light-gradient: linear-gradient(180deg, #EBF2FC 0%, #EEF8F9 100%);
+  --dark-gradient: linear-gradient(180deg, #040918 0%, #091540 100%);
+  --radius: 12px;
+}
+
+/* =============================
+   🧱 Configuración general
+   ============================= */
+body {
+  font-family: 'Noto Sans', sans-serif;
+  background: var(--light-gradient);
+  color: var(--neutral-900);
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.container {
+  width: 90%;
+  max-width: 900px;
+  margin: 2rem auto;
+}
+
+h1 {
+  text-align: center;
+  font-size: 1.8rem;
+  margin-bottom: 1.5rem;
+  color: var(--neutral-800);
+}
+
+/* =============================
+   🔘 Filtros
+   ============================= */
+.filters {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-bottom: 2rem;
+}
+
+.filters button {
+  background: var(--neutral-200);
+  border: none;
+  padding: 8px 18px;
+  border-radius: var(--radius);
+  cursor: pointer;
+  font-weight: 500;
+  transition: all 0.3s ease;
+}
+
+.filters button.active,
+.filters button:hover {
+  background: var(--neutral-700);
+  color: var(--neutral-0);
+}
+
+/* =============================
+   🧩 Tarjetas de extensiones
+   ============================= */
+.extensions {
+  display: grid;
+  gap: 1.2rem;
+}
+
+.extension-card {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: var(--neutral-0);
+  border-radius: var(--radius);
+  padding: 1rem 1.2rem;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.extension-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+}
+
+.extension-card.inactive {
+  opacity: 0.6;
+}
+
+.extension-card img.logo {
+  width: 48px;
+  height: 48px;
+  margin-right: 1rem;
+}
+
+.extension-card .info {
+  flex: 1;
+}
+
+.extension-card h3 {
+  margin: 0 0 0.3rem;
+  color: var(--neutral-800);
+}
+
+.extension-card p {
+  margin: 0;
+  font-size: 0.9rem;
+  color: var(--neutral-600);
+}
+
+/* =============================
+   🧰 Botones de acción
+   ============================= */
+.actions {
+  display: flex;
+  gap: 8px;
+}
+
+.actions button {
+  border: none;
+  padding: 6px 14px;
+  border-radius: var(--radius);
+  cursor: pointer;
+  font-weight: 500;
+  transition: background 0.3s ease;
+}
+
+.actions .toggle {
+  background-color: var(--neutral-200);
+}
+
+.actions .toggle:hover {
+  background-color: var(--neutral-300);
+}
+
+.actions .remove {
+  background-color: var(--red-500);
+  color: var(--neutral-0);
+}
+
+.actions .remove:hover {
+  background-color: var(--red-700);
+}
+
+/* =============================
+   🌙 Modo oscuro
+   ============================= */
+body[data-theme="dark"] {
+  background: var(--dark-gradient);
+  color: var(--neutral-0);
+}
+
+body[data-theme="dark"] .extension-card {
+  background: var(--neutral-800);
+  color: var(--neutral-0);
+}
+
+body[data-theme="dark"] .filters button {
+  background: var(--neutral-700);
+  color: var(--neutral-0);
+}
+
+body[data-theme="dark"] .filters button.active,
+body[data-theme="dark"] .filters button:hover {
+  background: var(--neutral-0);
+  color: var(--neutral-900);
+}
+
+/* =============================
+   📱 Responsive
+   ============================= */
+@media (max-width: 600px) {
+  .extension-card {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+  }
+
+  .actions {
+    width: 100%;
+    justify-content: flex-end;
+  }
+}
+
+/* =============================
+   📎 Créditos
+   ============================= */
+.attribution {
+  font-size: 11px;
+  text-align: center;
+  margin: 2rem 0;
+}
+.attribution a {
+  color: hsl(228, 45%, 44%);
+}
+
+/* =============================
+   🔍 Barra de búsqueda y tema
+   ============================= */
+.toolbar {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 1.5rem;
+}
+
+.toolbar input {
+  padding: 8px 12px;
+  width: 60%;
+  max-width: 300px;
+  border-radius: var(--radius);
+  border: 1px solid var(--neutral-300);
+  font-size: 0.95rem;
+  outline: none;
+  transition: box-shadow 0.2s ease;
+}
+
+.toolbar input:focus {
+  box-shadow: 0 0 0 2px var(--neutral-600);
+}
+
+.theme-btn {
+  background: var(--neutral-200);
+  border: none;
+  padding: 8px 16px;
+  border-radius: var(--radius);
+  cursor: pointer;
+  font-weight: 500;
+  transition: background 0.3s ease;
+}
+
+.theme-btn:hover {
+  background: var(--neutral-300);
+}
+
+/* Dark mode para el buscador */
+body[data-theme="dark"] .toolbar input {
+  background: var(--neutral-700);
+  color: var(--neutral-0);
+  border-color: var(--neutral-600);
+}
+
+body[data-theme="dark"] .toolbar input::placeholder {
+  color: var(--neutral-300);
+}
+
+body[data-theme="dark"] .theme-btn {
+  background: var(--neutral-700);
+  color: var(--neutral-0);
+}
+
+body[data-theme="dark"] .theme-btn:hover {
+  background: var(--neutral-600);
+}
+
+/* Mensaje cuando no hay resultados */
+.no-results {
+  text-align: center;
+  color: var(--neutral-600);
+  font-style: italic;
+}
